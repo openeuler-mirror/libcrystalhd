@@ -6,8 +6,8 @@
 Summary:       Broadcom Crystal HD device interface library
 Name:          libcrystalhd
 Version:       3.10.0
-Release:       1
-License:       LGPLv2
+Release:       2
+License:       LGPLv2+
 URL:           http://www.broadcom.com/support/crystal-hd/
 ExcludeArch:   s390 s390x
 
@@ -132,5 +132,8 @@ install -pm 0644 driver/linux/20-crystalhd.rules \
 
 
 %changelog
+* Mon May 23 2022 tanyulong<tanyulong@kylinos.cn> - 3.10.0-2
+- Improve the project according to the requirements of compliance improvement
+
 * Mon Aug 23 2021 peijiankang <peijiankang@kylinos.cn> - 3.10.0-1
 - Init libcrystalhd for openeular
