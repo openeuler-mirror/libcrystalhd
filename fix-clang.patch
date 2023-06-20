@@ -1,0 +1,35 @@
+diff -ur libcrystalhd-20120405/examples/Makefile libcrystalhd-20120405/examples/Makefile
+--- libcrystalhd-20120405/examples/Makefile	2011-03-15 04:02:54.000000000 +0800
++++ libcrystalhd-20120405/examples/Makefile	2023-06-19 17:31:33.785333126 +0800
+@@ -1,4 +1,4 @@
+-CPP := g++
++CPP = clang++
+ CPPFLAGS += -D__LINUX_USER__
+ LDFLAGS += -lcrystalhd -lpthread
+ INCLUDES += -I../include/ -I../linux_lib/libcrystalhd/
+diff -ur libcrystalhd-20120405/filters/gst/gst-plugin/src/Makefile.am libcrystalhd-20120405/filters/gst/gst-plugin/src/Makefile.am
+--- libcrystalhd-20120405/filters/gst/gst-plugin/src/Makefile.am	2011-03-15 04:02:54.000000000 +0800
++++ libcrystalhd-20120405/filters/gst/gst-plugin/src/Makefile.am	2023-06-19 17:31:33.785333126 +0800
+@@ -1,8 +1,8 @@
+ # plugindir is set in configure
+ 
+ ROOTDIR    = ../../../..
+-CC = g++
+-CPP = g++
++CC = clang++
++CPP = clang++
+ INCLUDES = -I./ -I/usr/include -I/usr/include/libcrystalhd
+ 
+ BCMDEC_CFLAGS = $(INCLUDES) -D__LINUX_USER__ -DWMV_FILE_HANDLING
+diff -ur libcrystalhd-20120405/linux_lib/libcrystalhd/Makefile libcrystalhd-20120405/linux_lib/libcrystalhd/Makefile
+--- libcrystalhd-20120405/linux_lib/libcrystalhd/Makefile	2011-03-15 04:02:54.000000000 +0800
++++ libcrystalhd-20120405/linux_lib/libcrystalhd/Makefile	2023-06-19 17:32:05.693397518 +0800
+@@ -11,7 +11,7 @@
+ 
+ AT   = @
+ ECHO = ${AT} echo
+-BCGCC = g++
++BCGCC =clang++
+ 
+ ROOTDIR = ../..
+ 

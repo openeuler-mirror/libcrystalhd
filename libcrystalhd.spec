@@ -6,7 +6,7 @@
 Summary:       Broadcom Crystal HD device interface library
 Name:          libcrystalhd
 Version:       3.10.0
-Release:       2
+Release:       3
 License:       LGPLv2+
 URL:           http://www.broadcom.com/support/crystal-hd/
 ExcludeArch:   s390 s390x
@@ -25,7 +25,9 @@ Source5:       libcrystalhd-snapshot.sh
 Patch0:        libcrystalhd-nosse2.patch
 # https://patchwork2.kernel.org/patch/2247431/
 Patch1:        crystalhd-gst-Port-to-GStreamer-1.0-API.patch
-
+%if "%toolchain"=="clang"
+Patch2:        fix-clang.patch
+%endif
 BuildRequires: gcc-c++
 BuildRequires: autoconf automake libtool
 BuildRequires: gstreamer1-devel >= %{majorminor}
@@ -73,6 +75,7 @@ cp %{SOURCE1} %{SOURCE4} .
 sed -i -e 's|-msse2||' linux_lib/libcrystalhd/Makefile
 %endif
 %patch1 -p1 -b .gst1
+%patch2 -p1
 
 %build
 pushd linux_lib/libcrystalhd/ > /dev/null 2>&1
@@ -132,6 +135,9 @@ install -pm 0644 driver/linux/20-crystalhd.rules \
 
 
 %changelog
+* Mon Jun 19 2023 zhangxiang <zhangxiang@iscas.ac.cn> - 3.10.0-3
+- Fix clang build error
+
 * Mon May 23 2022 tanyulong<tanyulong@kylinos.cn> - 3.10.0-2
 - Improve the project according to the requirements of compliance improvement
 
